@@ -19,6 +19,10 @@
         {
             return $this->unique_id;
         }
+        function getId()
+        {
+           return $this->id;
+        }
 
     }
 

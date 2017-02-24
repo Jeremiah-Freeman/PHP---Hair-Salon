@@ -39,6 +39,21 @@
            $this->assertEquals($unique_id,$result);
            var_dump($unique_id);
         }
+        function test_getId()
+        {
+            //Arrange
+           $name = "Sonya Blade";
+           $unique_id = 10;
+           $id = 5;
+           $test_id = new Client($name, $unique_id, $id);
+
+           //Act
+           $result = $test_id->getId();
+
+           //Assert
+           $this->assertEquals($id,$result);
+           var_dump($id);
+        }
 
     }
 
