@@ -16,6 +16,7 @@
 | Stylist getName test | Jesse G | match/pass |
 | Stylist getId test | 500 | match/pass |
 | Stylist save() test | save Object 1 | Object 1 passes |
+| Stylist getAll() test | get Object 1 and Object 2 | Object 1 and 2 gotten ( passes )|
 
 
   ## Setup / Installation Requirements
