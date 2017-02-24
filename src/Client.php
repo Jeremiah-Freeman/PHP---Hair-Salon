@@ -15,6 +15,10 @@
         {
             return $this->name;
         }
+        function getUniqueId()
+        {
+            return $this->unique_id;
+        }
 
     }
 
