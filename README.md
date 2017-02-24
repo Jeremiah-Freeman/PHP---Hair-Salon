@@ -6,9 +6,9 @@
    * This in an application for a hair salon. The owner can add stylists and display stylists.  The owner can add clients to a stylist as well as see all clients for each stylist.
 
 
-| Behavior | Input 1 | Input 2 | Output |
-|----------|---------|---------|--------|
-|
+| Behavior | Input 1 | Output |
+|----------|---------|--------|
+| Client getName test | Sonya Blade | match/pass
 
 
   ## Setup / Installation Requirements
