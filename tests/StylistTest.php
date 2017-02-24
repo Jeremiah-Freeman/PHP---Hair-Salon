@@ -73,6 +73,20 @@
            //Assert
            $this->assertEquals([$test_save_all,$test_save_all2], $result);
         }
+        function test_find()
+        {
+            //Arrange
+            $name = 'Jesse';
+            $test_find = new Stylist($name);
+            $test_find->save();
+            $name2 = 'Jesse';
+            $test_find2 = new Stylist($name2);
+            $test_find2->save();
+            //Act
+            $result = Stylist::find($test_find->getId());
+            //Assert
+            $this->assertEquals($test_find, $result);
+        }
 
     }
 
