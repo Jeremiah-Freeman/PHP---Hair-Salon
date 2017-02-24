@@ -56,8 +56,20 @@
 
            //Assert
            $this->assertEquals($test_save_all,$result[0]);
-
-
+        }
+        function test_getAll()
+        {
+           //Arrange
+           $name = 'Sonya';
+           $test_save_all = new Client($name);
+           $test_save_all->save();
+           $name2 = 'Sonya';
+           $test_save_all2 = new Client($name2);
+           $test_save_all2->save();
+           //Act
+           $result = Client::getAll();
+           //Assert
+           $this->assertEquals([$test_save_all,$test_save_all2], $result);
         }
 
 

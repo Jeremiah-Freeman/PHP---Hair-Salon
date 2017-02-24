@@ -21,7 +21,7 @@
         {
            $GLOBALS['DB']->exec("INSERT INTO client (name) VALUES ('{$this->getNames()}')");
            $this->id = $GLOBALS['DB']->lastInsertId();
-        
+
        }
         static function getAll()
         {
@@ -37,10 +37,8 @@
                 array_push($clients, $new_client);
             }var_dump($clients);
             return $clients;
-
         }
-
-
+        
         static function deleteAll()
         {
             $GLOBALS['DB']->exec("DELETE FROM client;");
