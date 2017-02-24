@@ -12,11 +12,12 @@
 | Client getId test | 5 | match/pass |
 | Client save() test | save Object 1 | Object 1 passes |
 | Client getAll() test | get Object 1 and Object 2 | Object 1 and 2 gotten ( passes )|
-| Stylist find() test | Find Object 1 | Object 1 found |
+| Client find() test | find Object 1 and Object 2 | Object 1 found |
 | Stylist getName test | Jesse G | match/pass |
 | Stylist getId test | 500 | match/pass |
 | Stylist save() test | save Object 1 | Object 1 passes |
 | Stylist getAll() test | get Object 1 and Object 2 | Object 1 and 2 gotten ( passes )|
+| Stylist find() test | find Object 1 and Object 2 | Object 1 found |
 
 
   ## Setup / Installation Requirements
