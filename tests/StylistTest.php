@@ -14,6 +14,12 @@
 
     class StylistTest extends PHPUnit_Framework_TestCase
     {
+        protected function tearDown()
+        {
+           Client::deleteAll();
+           Stylist::deleteAll();
+        }
+
 
         function test_get_name()
         {
@@ -39,6 +45,19 @@
 
            //Assert
            $this->assertEquals($id,$result);
+        }
+        function test_save()
+        {
+           //Arrange
+           $name = 'Jesse';
+           $test_save_all = new Stylist($name);
+           $test_save_all->save();
+
+           //Act
+           $result = Stylist::getAll();
+
+           //Assert
+           $this->assertEquals($test_save_all,$result[0]);
         }
 
     }

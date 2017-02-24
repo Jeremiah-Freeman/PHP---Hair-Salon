@@ -35,7 +35,7 @@
                 $new_client = new Client($client_name,$client_id);
 
                 array_push($clients, $new_client);
-            }var_dump($clients);
+            }
             return $clients;
         }
         static function find($search_id)
