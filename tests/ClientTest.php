@@ -71,6 +71,20 @@
            //Assert
            $this->assertEquals([$test_save_all,$test_save_all2], $result);
         }
+        function test_find()
+        {
+            //Arrange
+            $name = 'Sonya';
+            $test_find = new Client($name);
+            $test_find->save();
+            $name2 = 'Sonya';
+            $test_find2 = new Client($name2);
+            $test_find2->save();
+            //Act
+            $result = Client::find($test_find->getId());
+            //Assert
+            $this->assertEquals($test_find, $result);
+        }
 
 
     }

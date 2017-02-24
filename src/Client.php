@@ -38,7 +38,20 @@
             }var_dump($clients);
             return $clients;
         }
-        
+        static function find($search_id)
+        {
+            $found_name = null;
+            $names = Client::getAll();
+            foreach ($names as $name)
+            {
+                if ($search_id == $name->getId())
+                {
+                    $found_name = $name;
+                }
+            }
+            return $found_name;
+        }
+
         static function deleteAll()
         {
             $GLOBALS['DB']->exec("DELETE FROM client;");
