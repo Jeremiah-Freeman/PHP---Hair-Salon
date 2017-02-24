@@ -2,26 +2,48 @@
     class Client
     {
         private $name;
-        private $unique_id;
         private $id;
 
-        function __construct($name, $unique_id=null, $id=Null)
+        function __construct($name,$id=null)
         {
             $this->name = $name;
-            $this->unique_id = $unique_id;
             $this->id = $id;
         }
-        function getName()
+        function getNames()
         {
             return $this->name;
-        }
-        function getUniqueId()
-        {
-            return $this->unique_id;
         }
         function getId()
         {
            return $this->id;
+        }
+        function save()
+        {
+           $GLOBALS['DB']->exec("INSERT INTO client (name) VALUES ('{$this->getNames()}')");
+           $this->id = $GLOBALS['DB']->lastInsertId();
+        
+       }
+        static function getAll()
+        {
+            $returned_clients = $GLOBALS['DB']->query("SELECT * FROM client;");
+            $clients = array();
+            foreach ($returned_clients as $client)
+            {
+                $client_name = $client['name'];
+                $client_id = $client['id'];
+
+                $new_client = new Client($client_name,$client_id);
+
+                array_push($clients, $new_client);
+            }var_dump($clients);
+            return $clients;
+
+        }
+
+
+        static function deleteAll()
+        {
+            $GLOBALS['DB']->exec("DELETE FROM client;");
         }
 
     }

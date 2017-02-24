@@ -8,7 +8,9 @@
 
 | Behavior | Input 1 | Output |
 |----------|---------|--------|
-| Client getName test | Sonya Blade | match/pass
+| Client getName test | Sonya Blade | match/pass |
+| Client getUniqueId test | 10 | match/pass |
+| Client getId test | 5 | match/pass |
 
 
   ## Setup / Installation Requirements

@@ -13,6 +13,11 @@
 
     class ClientTest extends PHPUnit_Framework_TestCase
     {
+        protected function tearDown()
+        {
+           Client::deleteAll();
+        }
+
         function test_get_name()
         {
             //Arrange
@@ -20,40 +25,41 @@
            $test_name = new Client($name);
 
            //Act
-           $result = $test_name->getName();
+           $result = $test_name->getNames();
 
            //Assert
            $this->assertEquals($name,$result);
         }
-        function test_get_unique_id()
-        {
-            //Arrange
-           $name = "Sonya Blade";
-           $unique_id = 10;
-           $test_unique_id = new Client($name, $unique_id);
 
-           //Act
-           $result = $test_unique_id->getUniqueId();
-
-           //Assert
-           $this->assertEquals($unique_id,$result);
-           var_dump($unique_id);
-        }
         function test_getId()
         {
             //Arrange
            $name = "Sonya Blade";
-           $unique_id = 10;
            $id = 5;
-           $test_id = new Client($name, $unique_id, $id);
+           $test_id = new Client($name,$id);
 
            //Act
            $result = $test_id->getId();
 
            //Assert
            $this->assertEquals($id,$result);
-           var_dump($id);
         }
+        function test_save()
+        {
+           //Arrange
+           $name = 'Sonya';
+           $test_save_all = new Client($name);
+           $test_save_all->save();
+
+           //Act
+           $result = Client::getAll();
+
+           //Assert
+           $this->assertEquals($test_save_all,$result[0]);
+
+
+        }
+
 
     }
 
