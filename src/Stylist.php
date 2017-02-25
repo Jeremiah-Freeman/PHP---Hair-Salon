@@ -9,6 +9,9 @@
             $this->name = $name;
             $this->id = $id;
         }
+
+        //getters
+
         function getNames()
         {
             return $this->name;
@@ -17,6 +20,18 @@
         {
            return $this->id;
         }
+
+        //setters
+
+        function setNames($new_name)
+        {
+           $this->name = (string) $new_name;
+        }
+        function setId($new_id)
+        {
+           $this->id = (string) $new_id;
+        }
+
         function save()
         {
            $GLOBALS['DB']->exec("INSERT INTO stylist (name) VALUES ('{$this->getNames()}')");
@@ -55,7 +70,7 @@
             }
             return $found_stylist;
         }
-
+        
 
 
     }
