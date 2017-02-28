@@ -12,7 +12,7 @@
 
         //getters
 
-        function getNames()
+        function getName()
         {
             return $this->name;
         }
@@ -23,7 +23,7 @@
 
         //setters
 
-        function setNames($new_name)
+        function setName($new_name)
         {
            $this->name = (string) $new_name;
         }
@@ -34,7 +34,7 @@
 
         function save()
         {
-           $GLOBALS['DB']->exec("INSERT INTO stylist (name) VALUES ('{$this->getNames()}')");
+           $GLOBALS['DB']->exec("INSERT INTO stylist (name) VALUES ('{$this->getName()}')");
            $this->id = $GLOBALS['DB']->lastInsertId();
 
         }
@@ -70,7 +70,12 @@
             }
             return $found_stylist;
         }
-        
+        function update($new_name)
+        {
+            $GLOBALS['DB']->exec("UPDATE stylist SET name = '{$new_name}' WHERE id = {$this->getId()};");
+            $this->setName($new_name);
+        }
+
 
 
     }

@@ -28,7 +28,7 @@
            $test_name = new Stylist($name);
 
            //Act
-           $result = $test_name->getNames();
+           $result = $test_name->getName();
 
            //Assert
            $this->assertEquals($name,$result);
@@ -87,7 +87,23 @@
             //Assert
             $this->assertEquals($test_find, $result);
         }
-    
+        function testUpdate()
+        {
+            //Arrange
+            $name = "Upala";
+            $id = 1;
+            $test_update = new Stylist($name, $id);
+            $test_update->save();
+
+            $new_name = "Lapiz";
+
+            //Act
+            $test_update->update($new_name);
+
+            //Assert
+            $this->assertEquals($new_name, $test_update->getName());
+        }
+
 
     }
 
