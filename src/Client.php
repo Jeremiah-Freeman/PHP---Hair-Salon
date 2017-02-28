@@ -9,7 +9,7 @@
             $this->name = $name;
             $this->id = $id;
         }
-        function getNames()
+        function getName()
         {
             return $this->name;
         }
@@ -17,9 +17,13 @@
         {
            return $this->id;
         }
+        function setName($new_name)
+        {
+            $this->name = (string) $new_name;
+        }
         function save()
         {
-           $GLOBALS['DB']->exec("INSERT INTO client (name) VALUES ('{$this->getNames()}')");
+           $GLOBALS['DB']->exec("INSERT INTO client (name) VALUES ('{$this->getName()}')");
            $this->id = $GLOBALS['DB']->lastInsertId();
 
        }
@@ -55,6 +59,11 @@
         static function deleteAll()
         {
             $GLOBALS['DB']->exec("DELETE FROM client;");
+        }
+        function update($new_name)
+        {
+            $GLOBALS['DB']->exec("UPDATE client SET name = '{$new_name}' WHERE id = {$this->getId()};");
+            $this->setName($new_name);
         }
 
     }

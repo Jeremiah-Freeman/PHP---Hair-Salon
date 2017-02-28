@@ -25,7 +25,7 @@
            $test_name = new Client($name);
 
            //Act
-           $result = $test_name->getNames();
+           $result = $test_name->getName();
 
            //Assert
            $this->assertEquals($name,$result);
@@ -85,6 +85,23 @@
             //Assert
             $this->assertEquals($test_find, $result);
         }
+        function testUpdate()
+        {
+            //Arrange
+            $name = "Sonya";
+            $id = 1;
+            $test_update = new Client($name, $id);
+            $test_update->save();
+
+            $new_name = "Upala";
+
+            //Act
+            $test_update->update($new_name);
+
+            //Assert
+            $this->assertEquals($new_name, $test_update->getName());
+        }
+
 
 
     }
