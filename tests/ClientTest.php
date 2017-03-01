@@ -101,7 +101,20 @@
             //Assert
             $this->assertEquals($new_name, $test_update->getName());
         }
+        function test_setName()
+        {
+            //Arrange
+            $name = "Randy";
+            $test_name = new Client($name);
+            $new_name = "Kathy";
 
+            //Act
+            $test_name->setname($new_name);
+            $result = $test_name->getname();
+
+            //Assert
+            $this->assertEquals($new_name, $result);
+        }
 
 
     }

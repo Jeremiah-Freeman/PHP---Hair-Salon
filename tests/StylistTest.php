@@ -33,6 +33,20 @@
            //Assert
            $this->assertEquals($name,$result);
         }
+        function test_setName()
+        {
+            //Arrange
+            $name = "Heather";
+            $test_name = new Stylist($name);
+            $new_name = "Sophia";
+
+            //Act
+            $test_name->setname($new_name);
+            $result = $test_name->getname();
+
+            //Assert
+            $this->assertEquals($new_name, $result);
+        }
         function test_get_id()
         {
             //Arrange
@@ -103,7 +117,6 @@
             //Assert
             $this->assertEquals($new_name, $test_update->getName());
         }
-
 
     }
 
