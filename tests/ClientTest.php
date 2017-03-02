@@ -5,6 +5,7 @@
     */
 
     require_once "src/Client.php";
+    require_once "src/Stylist.php";
 
     $server= 'mysql:host=localhost:8889;dbname=hair_salon_test';
     $username= 'root';
@@ -16,13 +17,15 @@
         protected function tearDown()
         {
            Client::deleteAll();
+           Stylist::deleteAll();
         }
 
         function test_get_name()
         {
             //Arrange
            $name = "Sonya Blade";
-           $test_name = new Client($name);
+           $stylist_id = 1;
+           $test_name = new Client($name, $stylist_id);
 
            //Act
            $result = $test_name->getName();
@@ -36,7 +39,8 @@
             //Arrange
            $name = "Sonya Blade";
            $id = 5;
-           $test_id = new Client($name,$id);
+           $stylist_id = 2;
+           $test_id = new Client($name,$stylist_id,$id);
 
            //Act
            $result = $test_id->getId();
@@ -48,7 +52,8 @@
         {
            //Arrange
            $name = 'Sonya';
-           $test_save_all = new Client($name);
+           $stylist_id = 1;
+           $test_save_all = new Client($name, $stylist_id);
            $test_save_all->save();
 
            //Act
@@ -61,10 +66,12 @@
         {
            //Arrange
            $name = 'Sonya';
-           $test_save_all = new Client($name);
+           $stylist_id = 1;
+           $test_save_all = new Client($name, $stylist_id);
            $test_save_all->save();
            $name2 = 'Sonya';
-           $test_save_all2 = new Client($name2);
+           $stylist_id2 = 1;
+           $test_save_all2 = new Client($name2,$stylist_id2);
            $test_save_all2->save();
            //Act
            $result = Client::getAll();
@@ -75,10 +82,12 @@
         {
             //Arrange
             $name = 'Sonya';
-            $test_find = new Client($name);
+            $stylist_id = 1;
+            $test_find = new Client($name, $stylist_id);
             $test_find->save();
             $name2 = 'Sonya';
-            $test_find2 = new Client($name2);
+            $stylist_id2 = 1;
+            $test_find2 = new Client($name2, $stylist_id2);
             $test_find2->save();
             //Act
             $result = Client::find($test_find->getId());
@@ -90,7 +99,8 @@
             //Arrange
             $name = "Sonya";
             $id = 1;
-            $test_update = new Client($name, $id);
+            $stylist_id = 1;
+            $test_update = new Client($name, $id, $stylist_id);
             $test_update->save();
 
             $new_name = "Upala";
@@ -105,7 +115,8 @@
         {
             //Arrange
             $name = "Randy";
-            $test_name = new Client($name);
+            $stylist_id = 1;
+            $test_name = new Client($name, $stylist_id);
             $new_name = "Kathy";
 
             //Act
