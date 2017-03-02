@@ -25,6 +25,12 @@
     return $app['twig']->render('index.html.twig', array('all-stylists' => Stylist::getAll()));
     });
 
+    $app->get("/stylists", function() use ($app) {
+    return $app['twig']->render('stylists.html.twig', array('stylists' => Stylist::getAll()));
+    });
+
+
+
     $app->post("/stylists", function() use ($app) {
         $new_name = new Stylist($_POST['name'] ,$_POST['stylist_id'] , $_POST['id']);
         $new_name->save();
@@ -32,7 +38,16 @@
     });
 
     $app->get("/stylists/{{id}}", function($id) use ($app) {
+        $stylist = Stylist::find($id);
+        return $app ['twig']-> render ('stylists.html.twig' , array('stylist' => $stylist , 'clients' => $stylist->getClients() , 'all_stylists' => Stylist::getAll()));
+    });
 
-    })
+
+
+    $app->post("/delete_stylists" , function() use ($app) {
+        Stylist::deleteAll();
+
+        return $app['twig']->render('stylists.html.twig' , array('stylists' => Stylist::getAll()));
+    });
     return $app;
 ?>
