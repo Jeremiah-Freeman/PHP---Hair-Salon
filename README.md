@@ -15,12 +15,14 @@
 | Client find() test | find Object 1 and Object 2 | Object 1 found |
 | Client setName() test | new name = Kathy | Kathy = $new_name |
 | Client stylist_id property addition | add stylist_id and test all construct tests | all test passing |
+| Client deleteAll function test | delete Stylist and Client | all deleted |
 | Stylist getName test | Jesse G | match/pass |
 | Stylist getId test | 500 | match/pass |
 | Stylist save() test | save Object 1 | Object 1 passes |
 | Stylist getAll() test | get Object 1 and Object 2 | Object 1 and 2 gotten ( passes )|
 | Stylist find() test | find Object 1 and Object 2 | Object 1 found |
 | Stylist setName() test | new name = Sophia | Sophia = $new_name |
+| Stylist deleteAll function test | delete Clients and Stylist | all deleted |
 
 
 
