@@ -21,7 +21,7 @@
     });
 
     $app->get("/stylist", function() use ($app) {
-        return $app['twig']->render('stylist.html.twig', array('stylist' => Stylist::getAll()));
+        return $app['twig']->render('stylists.html.twig', array('stylists' => Stylist::getAll()));
     });
 
     return $app;
