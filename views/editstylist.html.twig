@@ -1,0 +1,27 @@
+<html>
+<head>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <title>Stylist Client List</title>
+</head>
+<body>
+    <h1>Hello {{ stylist.getName }}</h1>
+
+    {% if client is not empty %}
+        <p>Here are all your currrent clients:</p>
+        <ul>
+            {% for client in stylists %}
+                <li> {{ client.getName }} </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+    <h2>Taking on more clients?  Add a new one here:</h2>
+    <br>
+    <div class="container" >
+        <form action="/addnewclient" method="post">
+           <input type="hidden" name="stylist_id" value="{{stylist.getId}}">
+           <input type="text" name="newclient" placeholder="clients first and last name"value="">
+           <button type="submit" name="button">Add</button>
+       </form>
+    </div>
+</body>
+</html>
