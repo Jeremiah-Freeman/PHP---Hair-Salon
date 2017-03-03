@@ -34,27 +34,42 @@
     $app->post("/stylists", function() use ($app) {
         $new_name = new Stylist($_POST['name'] , $_POST['id']);
         $new_name->save();
-        return $app['twig']->render('stylists.html.twig', array('new_stylist' => $new_name , 'stylists' => Stylist::getAll()));
+        return $app['twig']->render('stylists.html.twig', array('stylists' => Stylist::getAll()));
     });
 
-    $app->get("/editstylists/{id}", function($id) use ($app) {
+    $app->get("/viewstylists/{id}", function($id) use ($app) {
+
         $stylist = Stylist::find($id);
-        return $app ['twig']-> render ('editstylist.html.twig' , array('stylist' => $stylist , 'client' => Client::getAll(), 'all_stylists' => Stylist::getAll()));
-    });
+        $client = new Client($_POST['newclient'] , $_POST['stylist_id'] );
+        $client->save();
 
-    $app->post("/addnewclient" , function() use ($app) {
-        $new_client = new Client($_POST['name'], $_POST['id'], $_POST['stylist_id']);
-        $new_client->save();
+        return $app ['twig']-> render ('view_stylist.html.twig' , array(
+            'stylist' => $stylist,
+            'clients' => $client));
+    });
+    //
+    $app->post("/addclient/{id}" , function($id) use ($app) {
+
         $stylist = Stylist::find($id);
-        return $app ['twig'] -> render ('editstylist.html.twig' , array('client' => $new_client , 'stylist' => $stylist, 'allclients' => Client::getAll()));
-    });
+        $client = new Client($_POST['newclient'] , $_POST['stylist_id'] );
+        $client->save();
 
+        return $app ['twig'] -> render ('view_stylist.html.twig' , array('clients' => $client , 'stylist' => $stylis, 'stylist' => $stylist, 'allclients' => Client::getAll()));
+    });
 
 
     $app->post("/delete_stylists" , function() use ($app) {
         Stylist::deleteAll();
+        return $app['twig']->render('index.html.twig');
+    });
 
+    $app->post("/delete_clients" , function() use ($app) {
+        Stylist::deleteAll();
         return $app['twig']->render('stylists.html.twig' , array('stylists' => Stylist::getAll()));
     });
+
+
     return $app;
+
+
 ?>

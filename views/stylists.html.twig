@@ -10,10 +10,11 @@
         <p>Here are all your stylists:</p>
         <ul>
             {% for stylist in stylists %}
-                <li><a href="/editstylists/{{ stylist.getId }}">{{ stylist.getName }}</a></li>
+                <li><a href="/viewstylists/{{ stylist.getId }}">{{ stylist.getName }}</a></li>
             {% endfor %}
         </ul>
     {% endif %}
+
     <div class="container" >
         <form action='/stylists' method='post'>
             <label for='name'>Add new stylist: </label>
@@ -21,11 +22,6 @@
             <button type='submit'>Add</button>
         </form>
     </div>
-
-
-
-
-
     <form action='/delete_stylists' method='post'>
         <button type='submit'>Clear</button>
     </form>

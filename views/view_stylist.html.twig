@@ -6,10 +6,10 @@
 <body>
     <h1>Hello {{ stylist.getName }}</h1>
 
-    {% if client is not empty %}
+    {% if clients is not empty %}
         <p>Here are all your currrent clients:</p>
         <ul>
-            {% for client in stylists %}
+            {% for client in clients %}
                 <li> {{ client.getName }} </li>
             {% endfor %}
         </ul>
@@ -17,11 +17,18 @@
     <h2>Taking on more clients?  Add a new one here:</h2>
     <br>
     <div class="container" >
-        <form action="/addnewclient" method="post">
-           <input type="hidden" name="stylist_id" value="{{stylist.getId}}">
+        <form action="/addclient/{{stylist.getId}}" method="post">
+           <input id="stylist_id" type="hidden" name="stylist_id" value="{{stylist.getId}}">
+           <label for="newclient">Add new client:</label>
            <input type="text" name="newclient" placeholder="clients first and last name"value="">
+
            <button type="submit" name="button">Add</button>
        </form>
     </div>
+
+    <form action='/delete_clients' method='post'>
+        <button type='submit'>Clear</button>
+    </form>
+    <p><a href='/'>Home</a></p>
 </body>
 </html>
