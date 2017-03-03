@@ -42,14 +42,16 @@
         return $app ['twig']-> render ('editstylist.html.twig' , array('stylist' => $stylist , 'client' => Client::getAll(), 'all_stylists' => Stylist::getAll()));
     });
 
-    $app->post("/addnewclient" , function() use ($app) {
-        $new_client = new Client($_POST['name'], $_POST['id'], $_POST['stylist_id']);
+    $app->post("/addnewclient" , function($id) use ($app) {
+        $new_client = new Client($_POST['new_client'], $_POST['id'], $_POST['stylist_id']);
         $new_client->save();
         $stylist = Stylist::find($id);
-        return $app ['twig'] -> render ('editstylist.html.twig' , array('client' => $new_client , 'stylist' => $stylist, 'allclients' => Client::getAll()));
+
+        return $app ['twig'] -> render ('editstylist.html.twig' , array(
+            'clients' => $new_client ,
+            'stylist' => $stylist,
+            'allclients' => Client::getAll()));
     });
-
-
 
     $app->post("/delete_stylists" , function() use ($app) {
         Stylist::deleteAll();
