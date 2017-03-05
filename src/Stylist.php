@@ -57,6 +57,13 @@
         {
             $GLOBALS['DB']->exec("DELETE FROM stylists;");
         }
+
+        function delete()
+        {
+            $GLOBALS['DB']->exec("DELETE FROM stylists WHERE id = {$this->getId()};");
+            $GLOBALS['DB']->exec("DELETE FROM clients WHERE stylist_id = {$this->getId()};");
+        }
+
         static function find($search_id)
         {
             $found_stylist = null;
