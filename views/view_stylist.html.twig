@@ -18,9 +18,8 @@
     <br>
     <div class="container">
         <form action="/addclient" method="post">
-           <input id="stylist_id" type="hidden" name="stylist_id" value="{{stylist.getId}}">
-           <label for="newclient">Add new client:</label>
-           <input id="newclient" type="text" name="newclient" placeholder="clients name"value="">
+           <input id="stylist_id" type="hidden" name="stylist_id" value="{{ stylist.getId }}">
+               <input id="newclient" type="text" name="newclient" placeholder="Add new client"value="">
            <button type="submit" name="button">add</button>
        </form>
     </div>
