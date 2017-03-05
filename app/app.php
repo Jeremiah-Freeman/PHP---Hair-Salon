@@ -70,6 +70,7 @@
     });
 
     $app->patch("/stylist/{id}", function($id) use ($app) {
+
         $name = $_POST['name'];
         $current_stylist = Stylist::find($id);
         $current_stylist->update($name);
@@ -77,16 +78,18 @@
                 'stylist' => $current_stylist,
                 'clients' => $current_stylist->getClient()));
     });
+    $app->delete("/deletestylist/{id}" , function ($id) use ($app) {
+
+        $current_stylist = Stylist::find($id);
+        $current_stylist->delete();
+        return $app ['twig']-> render('index.html.twig' , array(
+            'stylist' => Stylist::getAll()));
+    });
+
 
     $app->post("/delete_stylists" , function() use ($app) {
         Stylist::deleteAll();
         return $app['twig']->render('index.html.twig');
-    });
-
-    $app->post("/delete_clients" , function() use ($app) {
-        Client::deleteAll();
-        return $app['twig']->render('stylists.html.twig' , array(
-            'stylists' => Stylist::getAll()));
     });
 
 
