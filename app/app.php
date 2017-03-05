@@ -78,6 +78,14 @@
                 'stylist' => $current_stylist,
                 'clients' => $current_stylist->getClient()));
     });
+
+    $app->get("/editclient/{id}" , function($id) use ($app) {
+        $client = Client::find($id);
+        return $app ['twig']-> render('edit_client.html.twig', array(
+            'client' => $client));
+
+    });
+
     $app->delete("/deletestylist/{id}" , function ($id) use ($app) {
 
         $current_stylist = Stylist::find($id);

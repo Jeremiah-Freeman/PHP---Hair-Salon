@@ -10,7 +10,7 @@
         <p>Here are all your currrent clients:</p>
         <ul>
             {% for client in clients %}
-                <li> {{ client.getName }} </li>
+                <li><a href="/editclient/{{ client.getId }}">{{ client.getName }}</a></li>
             {% endfor %}
         </ul>
     {% endif %}
