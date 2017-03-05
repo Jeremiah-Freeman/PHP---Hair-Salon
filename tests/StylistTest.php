@@ -147,18 +147,18 @@
         {
             //Arrange
             $name = "Sarunta Kiliaksterns";
-            $id = null;
+            $id = 10;
             $test_stylist = new Stylist($name, $id);
             $test_stylist->save();
 
             $test_stylist_id = $test_stylist->getId();
 
             $name = "Ranter Balandibaudt";
-            $new_client = new Client($name, $id, $test_stylist_id );
+            $new_client = new Client($name, $test_stylist_id );
             $new_client->save();
 
             $name2 = "Yelata Seet Maruactabate";
-            $new_client2 = new Client($name2, $id, $test_stylist_id );
+            $new_client2 = new Client($name2, $test_stylist_id );
             $new_client2->save();
 
 var_dump($new_client2);
