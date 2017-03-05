@@ -16,19 +16,12 @@
     {% endif %}
     <h2>Taking on more clients {{ stylist.getName }}?  Add a new one here:</h2>
     <br>
-    <div class="container" >
-
-        <form action="/addclient/{{stylist.getId}}" method="post">
+    <div class="container">
+        <form action="/addclient" method="post">
            <input id="stylist_id" type="hidden" name="stylist_id" value="{{stylist.getId}}">
            <label for="newclient">Add new client:</label>
-           <input type="text" name="newclient" placeholder="clients first and last name"value="">
-
-
-        <form action="/addnewclient" method="post">
-           <input type="hidden" name="stylist_id" value="{{stylist.getId}}">
-           <input type="text" name="newclient" placeholder="clients name"value="">
-
-           <button type="submit" name="button">Add</button>
+           <input id="newclient" type="text" name="newclient" placeholder="clients name"value="">
+           <button type="submit" name="button">add</button>
        </form>
     </div>
 

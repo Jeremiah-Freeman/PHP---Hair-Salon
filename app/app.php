@@ -31,7 +31,8 @@
 
 
 
-    $app->post("/stylists", function() use ($app) {
+    $app->post("/add/stylists", function() use ($app) {
+
         $new_name = new Stylist($_POST['name'] , $_POST['id']);
         $new_name->save();
         return $app['twig']->render('stylists.html.twig', array('stylists' => Stylist::getAll()));
@@ -42,16 +43,14 @@
         $stylist = Stylist::find($id);
         $client = new Client($_POST['newclient'] , $_POST['stylist_id'] );
         $client->save();
-
         return $app ['twig']-> render ('view_stylist.html.twig' , array(
             'stylist' => $stylist,
             'clients' => $client));
     });
-    //
-    $app->post("/addclient/{id}" , function($id) use ($app) {
 
+    $app->post("/addclient" , function() use ($app) {
 
-        $stylist = Stylist::find($id);
+        $stylist = Stylist::find();
         $client = new Client($_POST['newclient'] , $_POST['stylist_id'] );
         $client->save();
 
