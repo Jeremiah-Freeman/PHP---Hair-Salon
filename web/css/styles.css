@@ -1,0 +1,43 @@
+#twiglist {
+    margin-left: 10%;
+}
+
+#addclient {
+    margin-left: 10%;
+}
+
+#jumb {
+    margin-top: 30px;
+    background-color: #add8e6;
+    font-family: 'Josefin Sans', sans-serif;
+    text-align: center;
+    padding-left: 50px;
+    margin-right: 400px;
+    font-size: 28%;
+}
+
+.container {
+    background-color: #ffedcc;
+}
+
+#home {
+    color: #FFFFFF;
+}
+
+.btn {
+    margin-top: 5px;
+}
+
+.jumbotron {
+    text-align: center;
+}
+
+p {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 17px;
+}
+
+h1 {
+    margin-left: 15px;
+    margin-bottom: 20px;
+}

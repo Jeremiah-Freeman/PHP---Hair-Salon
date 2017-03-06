@@ -1,32 +1,40 @@
 <html>
 <head>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/styles.css">
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans" rel="stylesheet">
     <title>Stylist Client List</title>
 </head>
 <body>
-    <h1>Hello {{ stylist.getName }}</h1>
 
-    {% if clients is not empty %}
-        <p>Here are all your currrent clients:</p>
-        <ul>
-            {% for client in clients %}
-                <li><a href="/editclient/{{ client.getId }}">{{ client.getName }}</a></li>
-            {% endfor %}
-        </ul>
-    {% endif %}
-    <h2>Taking on more clients {{ stylist.getName }}?  Add a new one here:</h2>
-    <br>
-    <div class="container">
-        <form action="/addclient" method="post">
-           <input id="stylist_id" type="hidden" name="stylist_id" value="{{ stylist.getId }}">
-               <input id="newclient" type="text" name="newclient" placeholder="Add new client"value="">
-           <button type="submit" name="button">add</button>
-       </form>
+    <div id="twiglist" class="container">
+        <div id="jumb" class="jumbotron">
+            <p> {{ stylist.getName }}'s Dashboard </p>
+        </div>
+
+        <h1>Hello {{ stylist.getName }}</h1>
+        {% if clients is not empty %}
+            <p>Here are all your currrent clients:</p>
+            <ul>
+                {% for client in clients %}
+                    <li><a href="/client/{{ client.getId }}/edit">{{ client.getName }}</a></li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+
+        <div id="addclient"class="col-md-4">
+            <p>Taking on more clients {{ stylist.getName }}?<br>Add a new one here:</p>
+
+            <div class="form-group">
+                <form action="/addclient" method="post">
+                    <input id="stylist_id" class="form-control"type="hidden" name="stylist_id" value="{{ stylist.getId }}">
+                    <input id="newclient" class="form-control" type="text" name="newclient" placeholder="Add new client"value="">
+                    <button type="submit" class="btn btn-primary" name="button">add</button>
+                </form>
+            </div>
+            <p><a href='/stylist/{{ stylist.getId }}/edit'> Edit </a></p>
+            <p><a href='/'>Home</a></p>
+        </div>
     </div>
-    <p><a href='/stylist/{{ stylist.getId }}/edit'>: edit stylist :</a></p>
-    <form action='/delete_clients' method='post'>
-        <button type='submit'>Clear</button>
-    </form>
-    <p><a href='/'>Home</a></p>
 </body>
 </html>
